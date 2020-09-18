@@ -39,6 +39,9 @@ public class CoreCompetency {
 
     // TODO: Use the "Generate" tool to add a getter and setter for the 'value' field but
     //  ONLY a getter for the 'id' field.
+    public int getId() {
+        return id;
+    }
 
     public String getValue() {
         return value;
@@ -48,7 +51,4 @@ public class CoreCompetency {
         this.value = value;
     }
 
-    public int getId() {
-        return id;
-    }
 }
