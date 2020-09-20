@@ -13,6 +13,10 @@ public class JobTest {
     private Job fullConstructor;
     private Job identicalJobOne;
     private Job identicalJobTwo;
+    private Job blankLinesCheck;
+    private Job labelForEachField;
+    private Job emptyFields;
+    private Job idOnlyField;
 
     @Before
     public void createJobs() {
@@ -21,6 +25,10 @@ public class JobTest {
         fullConstructor = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         identicalJobOne = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         identicalJobTwo = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        blankLinesCheck = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        labelForEachField = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        emptyFields = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
+        idOnlyField = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
     }
 
     @Test
@@ -41,5 +49,41 @@ public class JobTest {
     @Test
     public void testJobsForEquality() {
         assertFalse(identicalJobOne.getId() == identicalJobTwo.getId());
+    }
+
+    @Test
+    public void testStringForBlankLines() {
+        assertEquals('\n', blankLinesCheck.toString().charAt(0));
+        assertEquals('\n', blankLinesCheck.toString().charAt(blankLinesCheck.toString().length() - 1));
+    }
+
+    @Test
+    public void testLabelForEachField() {
+        String testString = "\nID: " + labelForEachField.getId() +
+                "\nName: Product tester" +
+                "\nEmployer: ACME" +
+                "\nLocation: Desert" +
+                "\nPosition Type: Quality control" +
+                "\nCore Competency: Persistence" +
+                "\n";
+        assertEquals(testString, labelForEachField.toString());
+    }
+
+    @Test
+    public void testForEmptyField() {
+        String testString = "\nID: " + emptyFields.getId() +
+                "\nName: " + "Data not available" +
+                "\nEmployer: " + "Data not available" +
+                "\nLocation: " + "Data not available" +
+                "\nPosition Type: " + "Data not available" +
+                "\nCore Competency: " + "Data not available" +
+                "\n";
+        assertEquals(testString, emptyFields.toString());
+    }
+
+    @Test
+    public void testForOnlyIdField() {
+        String testString = "OOPS! This job does not seem to exist.";
+        assertEquals(testString, idOnlyField.toString());
     }
 }
