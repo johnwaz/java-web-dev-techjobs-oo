@@ -107,16 +107,16 @@ public class Job {
         if (this.name.equals("")) {
             this.name = "Data not available";
         }
-        if (employerValue.equals("")) {
+        if (employerValue == null) {
             employerValue = "Data not available";
         }
-        if (locationValue.equals("")) {
+        if (locationValue == null) {
             locationValue = "Data not available";
         }
-        if (positionTypeValue.equals("")) {
+        if (positionTypeValue == null) {
             positionTypeValue = "Data not available";
         }
-        if (coreCompetencyValue.equals("")) {
+        if (coreCompetencyValue == null) {
             coreCompetencyValue = "Data not available";
         }
         return "\nID: " + this.id +

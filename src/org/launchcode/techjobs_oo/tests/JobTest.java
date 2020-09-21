@@ -27,7 +27,7 @@ public class JobTest {
         identicalJobTwo = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         blankLinesCheck = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         labelForEachField = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        emptyFields = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
+        emptyFields = new Job("Product tester", new Employer(), new Location(), new PositionType(), new CoreCompetency());
         idOnlyField = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
     }
 
@@ -71,14 +71,7 @@ public class JobTest {
 
     @Test
     public void testForEmptyField() {
-        String testString = "\nID: " + emptyFields.getId() +
-                "\nName: " + "Data not available" +
-                "\nEmployer: " + "Data not available" +
-                "\nLocation: " + "Data not available" +
-                "\nPosition Type: " + "Data not available" +
-                "\nCore Competency: " + "Data not available" +
-                "\n";
-        assertEquals(testString, emptyFields.toString());
+        assertTrue(emptyFields.toString().contains("Data not available"));
     }
 
     @Test
